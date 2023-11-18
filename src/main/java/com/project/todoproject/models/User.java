@@ -1,5 +1,7 @@
 package com.project.todoproject.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -8,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -25,10 +28,11 @@ public class User {
 
     public static final String TABLE_NAME = "user";
 
+    public static final Object user = null;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true)
-    private Long id;
+    @Column(name = "id", unique = true) Long id;
 
     @Column(name = "username", length = 100, nullable = false, unique = true)
     @NotNull(groups = CreateUser.class)
@@ -42,6 +46,13 @@ public class User {
     @NotEmpty(groups = { CreateUser.class, UpdateUser.class })
     @Size(groups = CreateUser.class, min = 8, max = 60)
     private String password;
+
+    @OneToMany(mappedBy = "user")
+    private List<Task> task = new ArrayList<Task>();
+
+    private Object obj;
+
+    public Object description;
 
     public User() {
 
@@ -93,21 +104,23 @@ public class User {
     }
 
     @Override
-    public boolean equals(Object obj) 
-         if (obj == this)
+    public boolean equals (Object obj)
+         this.obj = obj;
+        if (obj == this)
          return true;
         if (obj == null)
          return false;
         if (obj instanceof User ) {
             return false;
-        User other = (User) obj;
+        var other = (User) obj;
         if (this.id == null)
             if(other.id != null)
                 return false;
-        else if (!this.id.equals, other.id )
+        else if (!this.id.equals other.id );
             return false;
     return Objects.equals(this.id, other.id) && Objects.equals(this.username, other.username) 
-    && Objects.equals(this.password, other.password)
+    && Objects.equals(this.password, other.password);
+        }}
 
     @Override
     public int hashCode() {
@@ -122,5 +135,8 @@ public class User {
     public static String getTableName() {
         return TABLE_NAME;
     }
+{
 
 }
+
+
