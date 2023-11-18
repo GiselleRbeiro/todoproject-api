@@ -30,6 +30,8 @@ public class User {
 
     public static final Object user = null;
 
+    public static final Long getId = null;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true) Long id;
@@ -50,12 +52,17 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Task> task = new ArrayList<Task>();
 
-    private Object obj;
+    private Object obj;{
+
+    }
 
     public Object description;
 
-    public User() {
+    public Iterable getTasks;{
 
+    }
+
+    public User() {
     }
 
     public User(Long id, String username, String password) {
@@ -104,7 +111,7 @@ public class User {
     }
 
     @Override
-    public boolean equals (Object obj)
+    public boolean equals (Object obj) {
          this.obj = obj;
         if (obj == this)
          return true;
@@ -120,7 +127,8 @@ public class User {
             return false;
     return Objects.equals(this.id, other.id) && Objects.equals(this.username, other.username) 
     && Objects.equals(this.password, other.password);
-        }}
+        }
+    }
 
     @Override
     public int hashCode() {
@@ -135,8 +143,4 @@ public class User {
     public static String getTableName() {
         return TABLE_NAME;
     }
-{
-
-}
-
-
+{}
