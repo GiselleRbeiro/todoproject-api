@@ -3,6 +3,8 @@ package com.project.todoproject.models;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import jakarta.persistence.Column;
@@ -58,9 +60,9 @@ public class User {
 
     public Object description;
 
-    public Iterable getTasks;{
+    public Iterable getTasks;
 
-    }
+    private List<Task> tasks;
 
     public User() {
     }
@@ -94,20 +96,12 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public User id(Long id) {
-        setId(id);
-        return this;
+    @JsonIgnore
+    public List<Task> getTasks(){
+        return this.tasks;
     }
-
-    public User username(String username) {
-        setUsername(username);
-        return this;
-    }
-
-    public User password(String password) {
-        setPassword(password);
-        return this;
+    public void setTasks() {
+        this.tasks = tasks;
     }
 
     @Override
@@ -130,6 +124,8 @@ public class User {
         }
     }
 
+
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -143,4 +139,6 @@ public class User {
     public static String getTableName() {
         return TABLE_NAME;
     }
-{}
+{
+}
+}

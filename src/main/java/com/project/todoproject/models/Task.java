@@ -1,5 +1,6 @@
 package com.project.todoproject.models;
 
+import java.util.Map;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -36,7 +37,11 @@ public class Task {
 
     private Object obj;
 
+    public Object getUser;
 
+    public Map<String, ?> getId;
+
+  
     public Task() {
     }
 
@@ -58,8 +63,8 @@ public class Task {
         return this.user;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(User user2) {
+        this.user = user2;
     }
 
     public String getDescription() {
@@ -110,6 +115,9 @@ public class Task {
         int result = 1;
         result = prime * result + (this.id == null ? 0 : Long.hashCode(0));
         return result;
+    }
+
+    public void setUser(org.springframework.boot.autoconfigure.security.SecurityProperties.User user2) {
     }
 }
   
