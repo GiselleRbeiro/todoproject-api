@@ -89,7 +89,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         log.error("Authentication error ", authenticationException);
         return buildErrorResponse(
                 authenticationException,
-                HttpStatus.UNAUTHORIZED,
+                null, HttpStatus.UNAUTHORIZED,
                 request);
     }
     @ExceptionHandler(ObjectNotFoundException.class)
@@ -123,19 +123,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return null;
     }
     }
-//   
-
-//     @ExceptionHandler(AuthenticationException.class)
-//     @ResponseStatus(HttpStatus.UNAUTHORIZED)
-//     public ResponseEntity<Object> handleAuthenticationException(
-//             AuthenticationException authenticationException,
-//             WebRequest request) {
-//         log.error("Authentication error ", authenticationException);
-//         return buildErrorResponse(
-//                 authenticationException,
-//                 HttpStatus.UNAUTHORIZED,
-//                 request);
-//     }
 
 //     @ExceptionHandler(AccessDeniedException.class)
 //     @ResponseStatus(HttpStatus.FORBIDDEN)
