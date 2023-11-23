@@ -39,7 +39,7 @@ public class TaskController {
     public ResponseEntity<Void> create(@Valid @RequestBody Task obj) {
         this.taskService.create(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-        .path("/{id}").buildAndExpand(obj.getId).toUri();
+        .path("/{id}").buildAndExpand(obj.getId()).toUri();
         return null;
     
     }
